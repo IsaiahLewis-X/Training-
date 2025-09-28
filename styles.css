@@ -1,0 +1,223 @@
+:root {
+  color-scheme: light dark;
+  --bg: linear-gradient(135deg, #0f172a 0%, #1f2937 50%, #0f172a 100%);
+  --surface: rgba(15, 23, 42, 0.7);
+  --surface-light: rgba(255, 255, 255, 0.06);
+  --accent: #38bdf8;
+  --accent-soft: rgba(56, 189, 248, 0.1);
+  --text: #f8fafc;
+  --text-muted: rgba(248, 250, 252, 0.7);
+  --shadow: 0 30px 60px rgba(15, 23, 42, 0.45);
+  --font: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  padding: clamp(1rem, 3vw, 2rem);
+}
+
+.app {
+  display: grid;
+  gap: clamp(1.5rem, 4vw, 2.5rem);
+  width: min(1100px, 100%);
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  align-items: start;
+}
+
+.hero {
+  background: var(--surface);
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(16px);
+  display: grid;
+  gap: 1.5rem;
+  align-self: stretch;
+}
+
+.hero h1 {
+  font-size: clamp(1.9rem, 4vw, 2.6rem);
+  font-weight: 700;
+}
+
+.hero p {
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.tips h2 {
+  font-size: 1.2rem;
+  margin-bottom: 0.75rem;
+}
+
+.tips ul {
+  list-style: none;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.tips li {
+  padding: 0.85rem 1rem;
+  background: var(--surface-light);
+  border-radius: 16px;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+.chat {
+  background: var(--surface);
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(16px);
+  display: grid;
+  grid-template-rows: 1fr auto;
+  min-height: min(540px, 75vh);
+  position: relative;
+  overflow: hidden;
+}
+
+.messages {
+  padding: clamp(1.25rem, 3vw, 2rem);
+  display: grid;
+  gap: 1rem;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
+.message {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.75rem;
+  align-items: start;
+}
+
+.message .avatar {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #38bdf8, #6366f1);
+  display: grid;
+  place-items: center;
+  color: #0f172a;
+  font-weight: 700;
+  font-size: 1.1rem;
+  box-shadow: 0 12px 25px rgba(79, 70, 229, 0.25);
+}
+
+.message.user .avatar {
+  background: var(--accent-soft);
+  color: var(--accent);
+  border: 1px solid rgba(56, 189, 248, 0.4);
+}
+
+.message .bubble {
+  background: rgba(15, 23, 42, 0.55);
+  border-radius: 18px;
+  padding: 1rem 1.2rem;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  display: grid;
+  gap: 0.35rem;
+}
+
+.message.user .bubble {
+  background: rgba(15, 23, 42, 0.35);
+}
+
+.message .sender {
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.message .text {
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.message time {
+  font-size: 0.75rem;
+  color: rgba(148, 163, 184, 0.7);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.composer {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.75rem;
+  padding: clamp(1rem, 3vw, 1.5rem);
+  background: rgba(15, 23, 42, 0.8);
+  border-top: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+.composer input {
+  padding: 0.9rem 1.2rem;
+  border-radius: 16px;
+  border: 1px solid transparent;
+  font: inherit;
+  background: rgba(15, 23, 42, 0.6);
+  color: var(--text);
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+}
+
+.composer input:focus {
+  outline: none;
+  border-color: rgba(56, 189, 248, 0.5);
+  box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.2);
+}
+
+.composer button {
+  border: none;
+  padding: 0 1.5rem;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #38bdf8, #6366f1);
+  color: #0f172a;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 150ms ease, box-shadow 150ms ease;
+}
+
+.composer button:active {
+  transform: translateY(1px);
+}
+
+.composer button:hover {
+  box-shadow: 0 10px 20px rgba(56, 189, 248, 0.3);
+}
+
+@media (max-width: 780px) {
+  body {
+    padding: 1.2rem;
+  }
+
+  .app {
+    grid-template-columns: 1fr;
+  }
+
+  .chat {
+    min-height: 60vh;
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}

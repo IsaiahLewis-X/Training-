@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Friendly AI Assistant</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <section class="hero">
+        <header>
+          <h1>Friendly AI Assistant</h1>
+          <p>
+            A lightweight conversational demo that shows how a virtual
+            assistant might greet visitors, answer questions, and keep the
+            conversation going.
+          </p>
+        </header>
+        <article class="tips" aria-label="Chat tips">
+          <h2>Try asking me:</h2>
+          <ul>
+            <li>"What can you help me with today?"</li>
+            <li>"Any quick productivity advice?"</li>
+            <li>"Suggest a fun break activity."</li>
+          </ul>
+        </article>
+      </section>
+      <section class="chat" aria-live="polite">
+        <div class="messages" id="messages" role="log"></div>
+        <form id="chat-form" class="composer" autocomplete="off">
+          <label class="sr-only" for="user-input">Ask the assistant</label>
+          <input
+            id="user-input"
+            name="message"
+            type="text"
+            placeholder="Say something nice..."
+            required
+            minlength="2"
+          />
+          <button type="submit" aria-label="Send message">Send</button>
+        </form>
+      </section>
+    </main>
+    <template id="message-template">
+      <div class="message">
+        <div class="avatar" aria-hidden="true"></div>
+        <div class="bubble">
+          <p class="sender"></p>
+          <p class="text"></p>
+          <time></time>
+        </div>
+      </div>
+    </template>
+    <script src="script.js" type="module"></script>
+  </body>
+</html>
